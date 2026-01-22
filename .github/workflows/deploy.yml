@@ -1,38 +1,23 @@
-name: Deploy to GitHub Pages
+name: Deploy to Cloudflare Pages
 
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+    push:
+        branches:
+            - main # or your production branch
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+            - name: Install wrangler CLI
+              run: npm install -g wrangler
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+            - name: Publish to Cloudflare Pages
+              env:
+                  CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+                  CF_ACCOUNT_ID: 9cb9606c45f1613111571c109665de65
+                  CF_PROJECT_NAME: tiny-cell-dd07
+              run: |
+                  wrangler pages publish . --project-name $CF_PROJECT_NAME --branch main
