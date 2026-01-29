@@ -157,9 +157,13 @@ header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link {
     font-size: 1rem;
 }
 
+header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link:visited {
+    color: var(--primary-color);
+}
+
 header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link:hover {
-    background-color: var(--primary-color);
-    color: #ffffff;
+    background-color: var(--primary-color) !important;
+    color: #ffffff !important;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     border-color: var(--primary-color);
@@ -167,11 +171,8 @@ header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link:hover {
 
 header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link:active {
     transform: translateY(-1px) scale(1.02);
-    color: #000000;
-}
-
-header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link:visited {
-    color: var(--primary-color);
+    background-color: var(--primary-color) !important;
+    color: #ffffff !important;
 }
 
 header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link.active {
