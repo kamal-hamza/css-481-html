@@ -143,24 +143,24 @@ header.site-header nav.navigation ul.nav-list li.nav-item {
 }
 
 header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link {
-    color: white;
+    color: #ffffff;
     text-decoration: none;
     padding: 0.75rem 1.5rem;
     border-radius: 25px;
-    background-color: var(--secondary-color);
+    background-color: #555555;
     transition: all 0.3s ease, background-color 0.4s ease;
     font-weight: bold;
-    border: 2px solid white;
+    border: 2px solid #ffffff;
     cursor: pointer;
     display: inline-block;
 }
 
 header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link:hover {
-    background-color: white;
+    background-color: #ffffff;
     color: #000000;
     transform: translateY(-3px) scale(1.05);
     box-shadow: var(--hover-shadow);
-    border-color: white;
+    border-color: #ffffff;
 }
 
 header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link:active {
@@ -169,13 +169,13 @@ header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link:active {
 }
 
 header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link:visited {
-    color: white;
+    color: #ffffff;
 }
 
 header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link.active {
-    background-color: white;
+    background-color: #ffffff;
     color: #000000;
-    border-color: white;
+    border-color: #ffffff;
 }
 
 header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link.active:visited {
