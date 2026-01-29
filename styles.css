@@ -157,7 +157,7 @@ header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link {
 
 header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link:hover {
     background-color: white;
-    color: var(--primary-color);
+    color: #000000;
     transform: translateY(-3px) scale(1.05);
     box-shadow: var(--hover-shadow);
     border-color: white;
@@ -165,7 +165,7 @@ header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link:hover {
 
 header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link:active {
     transform: translateY(-1px) scale(1.02);
-    color: var(--primary-color);
+    color: #000000;
 }
 
 header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link:visited {
@@ -174,12 +174,12 @@ header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link:visited {
 
 header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link.active {
     background-color: white;
-    color: var(--primary-color);
+    color: #000000;
     border-color: white;
 }
 
 header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link.active:visited {
-    color: var(--primary-color);
+    color: #000000;
 }
 
 main#main-content {
