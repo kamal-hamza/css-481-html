@@ -9,31 +9,31 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <header>
-            <h1>My Favorite Book Series</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="games.html">Favorite Games</a></li>
-                    <li><a href="books.html">Book Collection</a></li>
+        <header id="main-header" class="site-header">
+            <h1 class="site-title">My Favorite Book Series</h1>
+            <nav id="main-nav" class="navigation">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="games.html" class="nav-link">Favorite Games</a></li>
+                    <li class="nav-item"><a href="books.html" class="nav-link active">Book Collection</a></li>
                 </ul>
             </nav>
         </header>
 
-        <main>
-            <article>
-                <h2>Books That Defined My Childhood</h2>
+        <main id="main-content" class="content-wrapper">
+            <article class="main-article">
+                <h2 class="article-title">Books That Defined My Childhood</h2>
 
-                <section>
-                    <h3>Why These Books Matter to Me</h3>
+                <section id="books-intro" class="content-section">
+                    <h3 class="section-title">Why These Books Matter to Me</h3>
                     <p>Reading has been a <strong>fundamental part</strong> of my childhood and it continues to be important today. These three book series offer <em>adventure</em>, <em>humor</em>, and <em>magic</em> that have shaped my love for reading.</p>
                     <p>Below are the series I've read <mark>multiple times</mark> and continue to recommend to everyone.</p>
                 </section>
 
-                <section>
-                    <h3>My Reading Statistics</h3>
-                    <table>
-                        <caption>Book Series Reading Progress</caption>
+                <section id="reading-stats" class="content-section stats-section">
+                    <h3 class="section-title">My Reading Statistics</h3>
+                    <table class="data-table">
+                        <caption class="table-caption">Book Series Reading Progress</caption>
                         <thead>
                             <tr>
                                 <th scope="col">Series</th>
@@ -72,19 +72,19 @@
 
                 <hr>
 
-                <section>
-                    <h3>Series 1: Harry Potter</h3>
-                    <h4>The Magical Series That Started It All</h4>
+                <section id="book-harry-potter" class="content-section book-section">
+                    <h3 class="section-title book-title">Series 1: Harry Potter</h3>
+                    <h4 class="book-subtitle">The Magical Series That Started It All</h4>
                     
                     <p>I've read the entire <cite>Harry Potter</cite> series <strong>three times</strong>, and each reading reveals new details and deeper meaning. This series basically introduced me to the world of fantasy literature and got me hooked on reading.</p>
                     
-                    <blockquote cite="https://www.jkrowling.com">
+                    <blockquote class="book-quote" cite="https://www.jkrowling.com">
                         <p>"It does not do to dwell on dreams and forget to live."</p>
                         <footer>— <cite>Albus Dumbledore, Harry Potter and the Sorcerer's Stone</cite></footer>
                     </blockquote>
 
-                    <h5>Series Information</h5>
-                    <dl>
+                    <h5 class="subsection-title">Series Information</h5>
+                    <dl class="book-info">
                         <dt>Author</dt>
                         <dd>J.K. Rowling</dd>
                         
@@ -112,8 +112,8 @@
                         <li><cite>Harry Potter and the Deathly Hallows</cite></li>
                     </ol>
 
-                    <h5>Why I Love This Series</h5>
-                    <ul>
+                    <h5 class="subsection-title">Why I Love This Series</h5>
+                    <ul class="reasons-list">
                         <li>Rich world-building with incredible detail</li>
                         <li>Complex characters that grow throughout the series</li>
                         <li>Themes of friendship, courage, and standing up for what's right</li>
@@ -136,19 +136,19 @@
                         <dd>Examining blood purity beliefs and house-elf rights.</dd>
                     </dl>
 
-                    <p><strong>Series Rating:</strong> <meter min="0" max="5" value="5">5 out of 5</meter> ⭐⭐⭐⭐⭐</p>
+                    <p class="rating"><strong>Series Rating:</strong> <meter class="rating-meter" min="0" max="10" value="10">10 out of 10</meter> ⭐⭐⭐⭐⭐</p>
                 </section>
 
                 <hr>
 
-                <section>
-                    <h3>Series 2: Geronimo Stilton</h3>
-                    <h4>Adventures of a Mouse Journalist</h4>
+                <section id="book-geronimo" class="content-section book-section">
+                    <h3 class="section-title book-title">Series 2: Geronimo Stilton</h3>
+                    <h4 class="book-subtitle">The Adventures of a Mouse Journalist</h4>
 
                     <p>The <cite>Geronimo Stilton</cite> series is a <strong>very nostalgic collection</strong> of adventures that combines <em>humor</em>, <em>education</em>, and <em>colorful storytelling</em>. It was also the first ever book series I read back in elementary school so it holds a special place in my heart.</p>
 
-                    <h5>Series Information</h5>
-                    <dl>
+                    <h5 class="subsection-title">Series Information</h5>
+                    <dl class="book-info">
                         <dt>Author</dt>
                         <dd>Elisabetta Dami <small>(pen name: Geronimo Stilton)</small></dd>
                         
@@ -196,11 +196,11 @@
                     </ol>
 
 
-                    <p><strong>Series Rating:</strong> <meter min="0" max="5" value="4.5">4.5 out of 5</meter> ⭐⭐⭐⭐</p>
+                    <p class="rating"><strong>Series Rating:</strong> <meter class="rating-meter" min="0" max="10" value="8">8 out of 10</meter> ⭐⭐⭐⭐</p>
 
-                    <aside>
-                        <h6>Fun Fact</h6>
-                        <p>The books use over <data value="100">100 different fonts</data> to make reading more engaging! Words are styled to match their meaning.</p>
+                    <aside class="fun-fact">
+                        <h6 class="fact-title">Fun Fact</h6>
+                        <p><data class="stat-value" value="250000000">Over 250 million copies</data> of Geronimo Stilton books have been sold worldwide!</p>
                     </aside>
                 </section>
 
@@ -212,8 +212,8 @@
 
                     <p><cite>Diary of a Wimpy Kid</cite> by Jeff Kinney is a <strong>really funny</strong> series that was just super entertaining to read because of all the hilarious stories the main character (Greg) would tell.</p>
 
-                    <h5>Series Information</h5>
-                    <dl>
+                    <h5 class="subsection-title">Series Information</h5>
+                    <dl class="book-info">
                         <dt>Author</dt>
                         <dd>Jeff Kinney</dd>
                         
@@ -321,7 +321,7 @@
                         <p>The books are written as <q>journals</q> <ins>(not diaries!)</ins> with Greg's commentary and stick-figure drawings. This format makes them <del>difficult</del> <ins>easy and fun</ins> to read!</p>
                     </aside>
 
-                    <blockquote>
+                    <blockquote class="book-quote">
                         <p>"I'll be famous one day, but for now I'm stuck in middle school with a bunch of morons."</p>
                         <footer>— <cite>Greg Heffley</cite></footer>
                     </blockquote>
@@ -357,11 +357,11 @@
             </article>
         </main>
 
-        <footer>
-            <p><small>&copy; 2026 Hamza Kamal. All rights reserved.</small></p>
-            <p>Last updated: <time datetime="2026-01-15">January 15, 2026</time></p>
-            <nav>
-                <p><a href="index.html">Back to Home</a> | <a href="games.html">View Favorite Games</a></p>
+        <footer id="main-footer" class="site-footer">
+            <p class="copyright"><small>&copy; 2026 Hamza Kamal. All rights reserved.</small></p>
+            <p class="last-updated">Books page last updated: <time datetime="2026-01-15">January 15, 2026</time></p>
+            <nav class="footer-nav">
+                <p class="footer-links"><a href="index.html" class="footer-link">Back to Home</a> | <a href="games.html" class="footer-link">View Gaming Collection</a></p>
             </nav>
         </footer>
     </body>

@@ -29,7 +29,80 @@ body {
     flex-direction: column;
 }
 
-header {
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+header.site-header {
     background-color: var(--primary-color);
     color: white;
     padding: 2rem 1rem;
@@ -38,18 +111,25 @@ header {
     top: 0;
     z-index: 1000;
     border-bottom: 4px solid var(--accent-color);
+    animation: slideDown 0.5s ease-out;
 }
 
-header h1 {
+header.site-header h1.site-title {
     font-size: 2.5rem;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1s ease-in;
+    cursor: default;
 }
 
-nav ul {
+header.site-header nav.navigation {
+    animation: fadeIn 1.2s ease-in;
+}
+
+header.site-header nav.navigation ul.nav-list {
     list-style-type: none;
     display: flex;
     justify-content: center;
@@ -58,33 +138,51 @@ nav ul {
     gap: 1rem;
 }
 
-nav li {
+header.site-header nav.navigation ul.nav-list li.nav-item {
     display: inline-block;
 }
 
-nav a {
+header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link {
     color: white;
     text-decoration: none;
     padding: 0.75rem 1.5rem;
     border-radius: 25px;
-    background-color: rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
+    background-color: var(--secondary-color);
+    transition: all 0.3s ease, background-color 0.4s ease;
     font-weight: bold;
-    border: 2px solid transparent;
+    border: 2px solid white;
+    cursor: pointer;
+    display: inline-block;
 }
 
-nav a:hover {
-    background-color: var(--accent-color);
-    transform: translateY(-3px);
+header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link:hover {
+    background-color: white;
+    color: var(--primary-color);
+    transform: translateY(-3px) scale(1.05);
     box-shadow: var(--hover-shadow);
     border-color: white;
 }
 
-nav a:active {
-    transform: translateY(-1px);
+header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link:active {
+    transform: translateY(-1px) scale(1.02);
+    color: var(--primary-color);
 }
 
-main {
+header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link:visited {
+    color: white;
+}
+
+header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link.active {
+    background-color: white;
+    color: var(--primary-color);
+    border-color: white;
+}
+
+header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link.active:visited {
+    color: var(--primary-color);
+}
+
+main#main-content {
     max-width: 1200px;
     width: 90%;
     margin: 2rem auto;
@@ -93,435 +191,838 @@ main {
     padding: 2rem;
     border-radius: 15px;
     box-shadow: var(--card-shadow);
+    animation: fadeInUp 0.8s ease-out;
 }
 
-article {
+main#main-content.content-wrapper {
+    transition: all 0.3s ease;
+}
+
+main#main-content article.main-article {
     margin-bottom: 2rem;
+    animation: fadeIn 1s ease-in 0.3s both;
 }
 
-article h2 {
+main#main-content article.main-article h2.article-title {
     color: var(--primary-color);
     font-size: 2rem;
     margin-bottom: 1.5rem;
     border-left: 5px solid var(--accent-color);
     padding-left: 1rem;
+    cursor: default;
+    transition: color 0.3s ease;
 }
 
-section {
+main#main-content article.main-article h2.article-title:hover {
+    color: var(--secondary-color);
+}
+
+main#main-content article.main-article section.content-section {
     margin-bottom: 2.5rem;
+    transition: transform 0.3s ease;
 }
 
-section h3 {
+main#main-content article.main-article section.content-section:hover {
+    transform: translateX(5px);
+}
+
+main#main-content article.main-article section.content-section h3.section-title {
     color: var(--secondary-color);
     font-size: 1.75rem;
     margin-bottom: 1rem;
     border-bottom: 2px solid var(--border-color);
     padding-bottom: 0.5rem;
+    cursor: default;
+    transition: all 0.3s ease;
 }
 
-section h4 {
+main#main-content article.main-article section.content-section h3.section-title:hover {
     color: var(--primary-color);
+    border-bottom-color: var(--accent-color);
+}
+
+main#main-content article.main-article section.content-section h3.game-title,
+main#main-content article.main-article section.content-section h3.book-title {
+    color: var(--primary-color);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+main#main-content article.main-article section.content-section h3.game-title:hover,
+main#main-content article.main-article section.content-section h3.book-title:hover {
+    color: var(--accent-color);
+    transform: scale(1.02);
+}
+
+main#main-content article.main-article section.content-section h4.game-subtitle,
+main#main-content article.main-article section.content-section h4.book-subtitle {
+    color: var(--secondary-color);
     font-size: 1.4rem;
     margin-top: 1.5rem;
     margin-bottom: 0.75rem;
+    font-style: italic;
+    cursor: default;
 }
 
-section h5 {
+main#main-content article.main-article section.content-section h5.subsection-title {
     color: var(--accent-color);
     font-size: 1.2rem;
     margin-top: 1.25rem;
     margin-bottom: 0.75rem;
+    cursor: default;
+    transition: color 0.3s ease;
 }
 
-section h6 {
-    color: var(--light-gray);
+main#main-content article.main-article section.content-section h5.subsection-title:hover {
+    color: var(--dark-gray);
+}
+
+main#main-content article.main-article section.content-section h6.character-team,
+main#main-content article.main-article section.content-section h6.game-version,
+main#main-content article.main-article section.content-section h6.fact-title {
+    color: var(--dark-gray);
     font-size: 1.1rem;
     margin-top: 1rem;
     margin-bottom: 0.5rem;
     font-style: italic;
+    cursor: default;
 }
 
-p {
+main#main-content article.main-article section.content-section p {
     margin-bottom: 1rem;
     text-align: justify;
+    cursor: text;
+    transition: color 0.2s ease;
 }
 
-strong {
+main#main-content article.main-article section.content-section p:hover {
+    color: var(--secondary-color);
+}
+
+main#main-content article.main-article section.content-section p strong {
     color: var(--primary-color);
     font-weight: bold;
 }
 
-em {
+main#main-content article.main-article section.content-section p em {
     font-style: italic;
     color: var(--secondary-color);
 }
 
-mark {
+main#main-content article.main-article section.content-section p mark {
     background-color: var(--light-gray);
     padding: 2px 4px;
     border-radius: 3px;
+    cursor: help;
+    transition: all 0.3s ease;
 }
 
-blockquote {
+main#main-content article.main-article section.content-section p mark:hover {
+    background-color: var(--accent-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+main#main-content article.main-article section.content-section blockquote {
     background-color: var(--hover-bg);
     border-left: 5px solid var(--accent-color);
     margin: 1.5rem 0;
     padding: 1rem 1.5rem;
     font-style: italic;
     border-radius: 5px;
+    cursor: default;
+    transition: all 0.4s ease;
 }
 
-blockquote p {
+main#main-content article.main-article section.content-section blockquote:hover {
+    background-color: var(--border-color);
+    transform: translateX(10px);
+    box-shadow: var(--card-shadow);
+}
+
+main#main-content article.main-article section.content-section blockquote.featured-quote,
+main#main-content article.main-article section.content-section blockquote.game-quote,
+main#main-content article.main-article section.content-section blockquote.book-quote,
+main#main-content article.main-article section.content-section blockquote.fact-quote {
+    animation: slideInLeft 0.8s ease-out;
+}
+
+main#main-content article.main-article section.content-section blockquote p {
     margin-bottom: 0.5rem;
     font-size: 1.1rem;
 }
 
-blockquote footer {
+main#main-content article.main-article section.content-section blockquote footer {
     text-align: right;
     color: var(--light-gray);
     font-size: 0.9rem;
 }
 
-dl {
+main#main-content article.main-article section.content-section dl {
     margin: 1rem 0;
 }
 
-dt {
+main#main-content article.main-article section.content-section dl.definition-list,
+main#main-content article.main-article section.content-section dl.game-info,
+main#main-content article.main-article section.content-section dl.book-info,
+main#main-content article.main-article section.content-section dl.game-details {
+    transition: all 0.3s ease;
+}
+
+main#main-content article.main-article section.content-section dl.definition-list:hover,
+main#main-content article.main-article section.content-section dl.game-info:hover,
+main#main-content article.main-article section.content-section dl.book-info:hover,
+main#main-content article.main-article section.content-section dl.game-details:hover {
+    transform: scale(1.01);
+}
+
+main#main-content article.main-article section.content-section dl dt {
     font-weight: bold;
     color: var(--primary-color);
     margin-top: 0.75rem;
     font-size: 1.05rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
 }
 
-dd {
+main#main-content article.main-article section.content-section dl dt:hover {
+    color: var(--accent-color);
+}
+
+main#main-content article.main-article section.content-section dl dd {
     margin-left: 2rem;
     margin-bottom: 0.5rem;
     padding-left: 1rem;
     border-left: 3px solid var(--border-color);
+    cursor: text;
+    transition: all 0.3s ease;
 }
 
-ol, ul {
+main#main-content article.main-article section.content-section dl dd:hover {
+    border-left-color: var(--accent-color);
+    padding-left: 1.5rem;
+}
+
+main#main-content article.main-article section.content-section ol,
+main#main-content article.main-article section.content-section ul {
     margin: 1rem 0;
     padding-left: 2rem;
 }
 
-li {
+main#main-content article.main-article section.content-section ol li,
+main#main-content article.main-article section.content-section ul li {
     margin-bottom: 0.5rem;
+    cursor: default;
+    transition: all 0.3s ease;
 }
 
-ul li {
+main#main-content article.main-article section.content-section ol li:hover,
+main#main-content article.main-article section.content-section ul li:hover {
+    color: var(--secondary-color);
+    transform: translateX(5px);
+}
+
+main#main-content article.main-article section.content-section ul li {
     list-style-type: disc;
 }
 
-ol li {
+main#main-content article.main-article section.content-section ol li {
     list-style-type: decimal;
 }
 
-table {
+main#main-content article.main-article section.content-section ol.facts-list li,
+main#main-content article.main-article section.content-section ul.goals-list li,
+main#main-content article.main-article section.content-section ol.reasons-list li,
+main#main-content article.main-article section.content-section ul.favorites-list li {
+    animation: fadeIn 0.6s ease-in;
+}
+
+main#main-content article.main-article section.content-section ul.game-modes-list li,
+main#main-content article.main-article section.content-section ul.character-list li,
+main#main-content article.main-article section.content-section ul.features-list li,
+main#main-content article.main-article section.content-section ul.community-list li {
+    cursor: pointer;
+}
+
+main#main-content article.main-article section.content-section ul.game-modes-list li:hover,
+main#main-content article.main-article section.content-section ul.character-list li:hover,
+main#main-content article.main-article section.content-section ul.features-list li:hover,
+main#main-content article.main-article section.content-section ul.community-list li:hover {
+    background-color: var(--hover-bg);
+    padding-left: 0.5rem;
+    border-radius: 3px;
+}
+
+main#main-content article.main-article section.content-section table {
     width: 100%;
     border-collapse: collapse;
     margin: 1.5rem 0;
     box-shadow: var(--card-shadow);
     overflow: hidden;
     border-radius: 10px;
+    animation: fadeIn 1s ease-in;
 }
 
-caption {
+main#main-content article.main-article section.content-section table.data-table {
+    transition: all 0.3s ease;
+}
+
+main#main-content article.main-article section.content-section table.data-table:hover {
+    box-shadow: var(--hover-shadow);
+}
+
+main#main-content article.main-article section.content-section table caption {
     font-weight: bold;
     font-size: 1.2rem;
     margin-bottom: 0.75rem;
     color: var(--primary-color);
     text-transform: uppercase;
+    cursor: default;
 }
 
-thead {
+main#main-content article.main-article section.content-section table caption.table-caption {
+    transition: color 0.3s ease;
+}
+
+main#main-content article.main-article section.content-section table caption.table-caption:hover {
+    color: var(--accent-color);
+}
+
+main#main-content article.main-article section.content-section table thead {
     background-color: var(--primary-color);
     color: white;
 }
 
-th {
+main#main-content article.main-article section.content-section table thead tr th {
     padding: 1rem;
     text-align: left;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
+    cursor: default;
+    transition: background-color 0.3s ease;
 }
 
-tbody tr {
+main#main-content article.main-article section.content-section table thead tr th:hover {
+    background-color: var(--secondary-color);
+}
+
+main#main-content article.main-article section.content-section table tbody tr {
     border-bottom: 1px solid #ddd;
-    transition: background-color 0.2s ease;
+    transition: all 0.3s ease;
+    animation: slideInRight 0.5s ease-out;
 }
 
-tbody tr:nth-child(odd) {
+main#main-content article.main-article section.content-section table tbody tr:nth-child(odd) {
     background-color: var(--hover-bg);
 }
 
-tbody tr:hover {
-    background-color: var(--hover-bg);
+main#main-content article.main-article section.content-section table tbody tr:hover {
+    background-color: var(--border-color);
     cursor: pointer;
+    transform: scale(1.01);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-td {
+main#main-content article.main-article section.content-section table tbody tr td {
     padding: 0.75rem 1rem;
+    cursor: default;
+    transition: color 0.2s ease;
 }
 
-tfoot {
+main#main-content article.main-article section.content-section table tbody tr td:hover {
+    color: var(--secondary-color);
+}
+
+main#main-content article.main-article section.content-section table tfoot {
     background-color: var(--dark-gray);
     color: var(--background-color);
     font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
-tfoot td {
+main#main-content article.main-article section.content-section table tfoot:hover {
+    background-color: var(--accent-color);
+    cursor: default;
+}
+
+main#main-content article.main-article section.content-section table tfoot tr td {
     padding: 1rem;
     text-align: center;
 }
 
-hr {
+main#main-content article.main-article section.content-section hr {
     border: none;
     border-top: 3px solid var(--border-color);
     margin: 2rem 0;
     opacity: 0.5;
+    transition: all 0.3s ease;
 }
 
-aside {
+main#main-content article.main-article section.content-section hr:hover {
+    opacity: 1;
+    border-top-color: var(--accent-color);
+}
+
+main#main-content article.main-article section.content-section figure.game-figure {
+    margin: 1.5rem 0;
+    text-align: center;
+    cursor: default;
+    animation: fadeIn 1s ease-in 0.3s both;
+}
+
+main#main-content article.main-article section.content-section figure.game-figure figcaption {
+    font-style: italic;
+    color: var(--light-gray);
+    margin-top: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+main#main-content article.main-article section.content-section figure.game-figure figcaption:hover {
+    color: var(--secondary-color);
+}
+
+main#main-content article.main-article section.content-section p.rating {
+    cursor: default;
+    transition: color 0.3s ease;
+}
+
+main#main-content article.main-article section.content-section p.rating:hover {
+    color: var(--accent-color);
+}
+
+main#main-content article.main-article section.content-section p.rating meter.rating-meter {
+    width: 200px;
+    height: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+main#main-content article.main-article section.content-section p.rating meter.rating-meter:hover {
+    transform: scale(1.1);
+}
+
+main#main-content article.main-article section.game-section,
+main#main-content article.main-article section.book-section {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+main#main-content article.main-article section.content-section article.game-highlight {
+    transition: all 0.3s ease;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+main#main-content article.main-article section.content-section article.game-highlight:hover {
+    background-color: var(--hover-bg);
+    transform: translateX(10px);
+    box-shadow: var(--card-shadow);
+}
+
+main#main-content article.main-article section.stats-section {
+    animation: fadeIn 1s ease-in 0.3s both;
+}
+
+main#main-content article.main-article section.contact-section {
+    animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+main#main-content article.main-article section.highlight-section {
+    animation: fadeIn 1.2s ease-in 0.4s both;
+}
+
+main#main-content article.main-article section.quote-section {
+    animation: slideInLeft 1s ease-out 0.6s both;
+}
+
+main#main-content article.main-article section.content-section address.contact-info {
+    font-style: normal;
+    background-color: var(--hover-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+main#main-content article.main-article section.content-section address.contact-info:hover {
+    background-color: var(--border-color);
+    border-left-width: 8px;
+    transform: translateX(5px);
+}
+
+main#main-content aside#sidebar {
     background-color: var(--hover-bg);
     border: 2px solid var(--border-color);
     border-radius: 10px;
     padding: 1.5rem;
     margin: 1.5rem 0;
     box-shadow: var(--card-shadow);
+    transition: all 0.4s ease;
+    animation: slideInRight 0.8s ease-out;
 }
 
-aside h4, aside h6 {
+main#main-content aside#sidebar:hover {
+    background-color: var(--border-color);
+    border-color: var(--accent-color);
+    box-shadow: var(--hover-shadow);
+    cursor: pointer;
+}
+
+main#main-content aside#sidebar h4.sidebar-title {
+    color: var(--primary-color);
+    margin-top: 0;
+    cursor: default;
+    transition: color 0.3s ease;
+}
+
+main#main-content aside#sidebar h4.sidebar-title:hover {
+    color: var(--accent-color);
+}
+
+main#main-content aside#sidebar ul.sidebar-links {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+main#main-content aside#sidebar ul.sidebar-links li.sidebar-item {
+    margin-bottom: 0.75rem;
+}
+
+main#main-content aside#sidebar ul.sidebar-links li.sidebar-item a.sidebar-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+}
+
+main#main-content aside#sidebar ul.sidebar-links li.sidebar-item a.sidebar-link:hover {
+    color: var(--accent-color);
+    transform: translateX(10px);
+    text-decoration: underline;
+}
+
+main#main-content aside#sidebar ul.sidebar-links li.sidebar-item a.sidebar-link:visited {
+    color: var(--secondary-color);
+}
+
+main#main-content article.main-article section.content-section aside.fun-fact {
+    background-color: var(--hover-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    box-shadow: var(--card-shadow);
+    transition: all 0.4s ease;
+    animation: fadeIn 1s ease-in 0.5s both;
+}
+
+main#main-content article.main-article section.content-section aside.fun-fact:hover {
+    background-color: var(--border-color);
+    border-color: var(--accent-color);
+    box-shadow: var(--hover-shadow);
+    cursor: pointer;
+}
+
+main#main-content article.main-article section.content-section aside.fun-fact h6.fact-title {
     color: var(--primary-color);
     margin-top: 0;
 }
 
-address {
-    font-style: normal;
-    background-color: var(--hover-bg);
-    padding: 1rem;
-    border-radius: 8px;
-    border-left: 4px solid var(--primary-color);
+main#main-content article.main-article section.content-section aside.fun-fact p data.stat-value {
+    font-weight: bold;
+    color: var(--accent-color);
+    cursor: help;
+    transition: all 0.3s ease;
 }
 
-a {
+main#main-content article.main-article section.content-section aside.fun-fact p data.stat-value:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+main#main-content a {
     color: var(--secondary-color);
     text-decoration: underline;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-a:hover {
+main#main-content a:hover {
     color: var(--accent-color);
     text-decoration: none;
+    transform: scale(1.05);
 }
 
-a:visited {
+main#main-content a:visited {
     color: var(--dark-gray);
 }
 
-abbr {
-    text-decoration: underline dotted;
-    cursor: help;
+main#main-content a:active {
+    transform: scale(0.98);
 }
 
-cite {
+main#main-content abbr {
+    text-decoration: underline dotted;
+    cursor: help;
+    transition: all 0.3s ease;
+}
+
+main#main-content abbr:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+main#main-content cite {
     font-style: italic;
     color: var(--secondary-color);
 }
 
-small {
+main#main-content small {
     font-size: 0.85rem;
     color: var(--light-gray);
+    cursor: default;
 }
 
-sub {
+main#main-content sub {
     font-size: 0.75rem;
     vertical-align: sub;
 }
 
-sup {
+main#main-content sup {
     font-size: 0.75rem;
     vertical-align: super;
 }
 
-meter {
-    width: 200px;
-    height: 25px;
-}
-
-time {
+main#main-content time {
     font-weight: bold;
     color: var(--secondary-color);
+    cursor: help;
+    transition: color 0.3s ease;
 }
 
-figure {
-    margin: 1.5rem 0;
-    text-align: center;
-}
-
-figcaption {
-    font-style: italic;
-    color: var(--light-gray);
-    margin-top: 0.5rem;
-}
-
-dfn {
-    font-weight: bold;
+main#main-content time:hover {
     color: var(--accent-color);
 }
 
-q {
-    font-style: italic;
-    quotes: '"' '"' "'" "'";
+main#main-content dfn {
+    font-weight: bold;
+    color: var(--accent-color);
+    cursor: help;
+    transition: color 0.3s ease;
 }
 
-ins {
+main#main-content dfn:hover {
+    color: var(--primary-color);
+}
+
+main#main-content q {
+    font-style: italic;
+    quotes: '"' '"' "'" "'";
+    cursor: default;
+}
+
+main#main-content ins {
     background-color: var(--light-gray);
     text-decoration: none;
     padding: 2px 4px;
+    cursor: default;
+    transition: background-color 0.3s ease;
 }
 
-del {
+main#main-content ins:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+main#main-content del {
     background-color: var(--border-color);
     text-decoration: line-through;
     padding: 2px 4px;
+    cursor: not-allowed;
+    opacity: 0.7;
 }
 
-data {
-    font-weight: bold;
-    color: var(--accent-color);
-}
-
-footer {
+footer#main-footer.site-footer {
     background-color: var(--primary-color);
     color: var(--background-color);
     text-align: center;
     padding: 2rem 1rem;
     margin-top: auto;
     box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.6s ease-out;
 }
 
-footer p {
+footer#main-footer.site-footer p {
     margin-bottom: 0.5rem;
+    cursor: default;
 }
 
-footer a {
+footer#main-footer.site-footer p.copyright {
+    transition: color 0.3s ease;
+}
+
+footer#main-footer.site-footer p.copyright:hover {
     color: var(--light-gray);
 }
 
-footer a:hover {
+footer#main-footer.site-footer p.last-updated {
+    font-style: italic;
+    transition: color 0.3s ease;
+}
+
+footer#main-footer.site-footer p.last-updated:hover {
+    color: var(--accent-color);
+}
+
+footer#main-footer.site-footer p.footer-links {
+    margin-top: 0.5rem;
+}
+
+footer#main-footer.site-footer p.footer-links a.footer-link {
+    color: var(--light-gray);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+}
+
+footer#main-footer.site-footer p.footer-links a.footer-link:hover {
+    color: white;
+    transform: scale(1.1);
+    text-decoration: underline;
+}
+
+footer#main-footer.site-footer p.footer-links a.footer-link:visited {
+    color: var(--light-gray);
+}
+
+footer#main-footer.site-footer a {
+    color: var(--light-gray);
+    transition: all 0.3s ease;
+}
+
+footer#main-footer.site-footer a:hover {
     color: white;
 }
 
+footer#main-footer.site-footer a:visited {
+    color: var(--light-gray);
+}
+
 @media screen and (max-width: 768px) {
-    header h1 {
+    header.site-header h1.site-title {
         font-size: 1.75rem;
         letter-spacing: 1px;
     }
 
-    nav ul {
+    header.site-header nav.navigation ul.nav-list {
         flex-direction: column;
         gap: 0.5rem;
     }
 
-    nav a {
+    header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link {
         display: block;
         width: 100%;
         text-align: center;
     }
 
-    main {
+    main#main-content {
         width: 95%;
         padding: 1.5rem;
         margin: 1rem auto;
     }
 
-    article h2 {
+    main#main-content article.main-article h2.article-title {
         font-size: 1.5rem;
     }
 
-    section h3 {
+    main#main-content article.main-article section.content-section h3.section-title {
         font-size: 1.4rem;
     }
 
-    section h4 {
+    main#main-content article.main-article section.content-section h4.game-subtitle,
+    main#main-content article.main-article section.content-section h4.book-subtitle {
         font-size: 1.2rem;
     }
 
-    section h5 {
+    main#main-content article.main-article section.content-section h5.subsection-title {
         font-size: 1.1rem;
     }
 
-    table {
+    main#main-content article.main-article section.content-section table {
         font-size: 0.9rem;
     }
 
-    th, td {
+    main#main-content article.main-article section.content-section table thead tr th,
+    main#main-content article.main-article section.content-section table tbody tr td {
         padding: 0.5rem;
     }
 
-    blockquote {
+    main#main-content article.main-article section.content-section blockquote {
         padding: 0.75rem 1rem;
         margin: 1rem 0;
     }
 
-    dl dd {
+    main#main-content article.main-article section.content-section dl dd {
         margin-left: 1rem;
     }
 }
 
 @media screen and (max-width: 480px) {
-    header h1 {
+    header.site-header h1.site-title {
         font-size: 1.4rem;
     }
 
-    header {
+    header.site-header {
         padding: 1.5rem 0.5rem;
     }
 
-    main {
+    main#main-content {
         padding: 1rem;
         border-radius: 10px;
     }
 
-    article h2 {
+    main#main-content article.main-article h2.article-title {
         font-size: 1.3rem;
     }
 
-    section h3 {
+    main#main-content article.main-article section.content-section h3.section-title {
         font-size: 1.2rem;
     }
 
-    table {
+    main#main-content article.main-article section.content-section table {
         font-size: 0.8rem;
     }
 
-    th, td {
+    main#main-content article.main-article section.content-section table thead tr th,
+    main#main-content article.main-article section.content-section table tbody tr td {
         padding: 0.4rem;
         font-size: 0.75rem;
     }
 
-    caption {
+    main#main-content article.main-article section.content-section table caption.table-caption {
         font-size: 1rem;
     }
 
-    nav a {
+    header.site-header nav.navigation ul.nav-list li.nav-item a.nav-link {
         padding: 0.5rem 1rem;
         font-size: 0.9rem;
     }
 }
 
 @media screen and (min-width: 1200px) {
-    header h1 {
+    header.site-header h1.site-title {
         font-size: 3rem;
     }
 
-    main {
+    main#main-content {
         max-width: 1400px;
     }
 
-    article h2 {
+    main#main-content article.main-article h2.article-title {
         font-size: 2.5rem;
     }
 }
@@ -531,28 +1032,28 @@ footer a:hover {
         background: var(--background-color);
     }
 
-    header {
+    header.site-header {
         position: static;
         box-shadow: none;
         border-bottom: 2px solid black;
     }
 
-    nav {
+    header.site-header nav.navigation {
         display: none;
     }
 
-    main {
+    main#main-content {
         box-shadow: none;
         width: 100%;
         margin: 0;
     }
 
-    a {
+    main#main-content a {
         color: black;
         text-decoration: underline;
     }
 
-    footer {
+    footer#main-footer.site-footer {
         box-shadow: none;
     }
 }
